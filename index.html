@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swastik Chattopadhyay - Software Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 60px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .nav-btn.active,
+        .nav-btn:hover {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Sections */
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #667eea;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .card-meta {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 5px 0;
+            color: #666;
+        }
+
+        /* Achievements */
+        .achievement {
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .achievement:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement i {
+            color: #667eea;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 2.5em;
+            }
+
+            .contact-info {
+                gap: 15px;
+            }
+
+            .nav {
+                padding: 10px;
+                gap: 10px;
+            }
+
+            .nav-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .section {
+                padding: 25px 20px;
+            }
+
+            .section h2 {
+                font-size: 2em;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Floating Animation */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Glowing Effect */
+        .glow {
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header floating">
+            <div class="profile-img glow">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>Swastik Chattopadhyay</h1>
+            <p>Computer Science Engineering Student | Full-Stack Developer | AI Enthusiast</p>
+            <div class="contact-info">
+                <a href="mailto:swastikchattopadhyay.26@gmail.com">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="tel:+917439443702">
+                    <i class="fas fa-phone"></i> +91-7439443702
+                </a>
+                <a href="#" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="#" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="#" target="_blank">
+                    <i class="fas fa-code"></i> LeetCode
+                </a>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav">
+            <button class="nav-btn active" onclick="showSection('about')">About</button>
+            <button class="nav-btn" onclick="showSection('education')">Education</button>
+            <button class="nav-btn" onclick="showSection('experience')">Experience</button>
+            <button class="nav-btn" onclick="showSection('projects')">Projects</button>
+            <button class="nav-btn" onclick="showSection('skills')">Skills</button>
+            <button class="nav-btn" onclick="showSection('achievements')">Achievements</button>
+        </div>
+
+        <!-- About Section -->
+        <div id="about" class="section active">
+            <h2>About Me</h2>
+            <div class="card">
+                <p style="font-size: 1.1em; line-height: 1.8; text-align: center; color: #555;">
+                    I'm a passionate Computer Science Engineering student with a strong foundation in full-stack development, AI, and software engineering. Currently pursuing my B.Tech at IEM Kolkata with an impressive GPA of 9.85, I've gained hands-on experience through internships at VECC, Accenture, and various freelance projects. My expertise spans across Python, React, MySQL, and emerging AI technologies, with a proven track record of building scalable applications that serve 50+ users and achieve high satisfaction rates.
+                </p>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div id="education" class="section">
+            <h2>Education</h2>
+            <div class="card">
+                <h3>Bachelor of Technology - Computer Science and Engineering</h3>
+                <div class="card-meta">Institute of Engineering & Management, Salt Lake, Kolkata | 2022–2026</div>
+                <p><strong>GPA:</strong> 9.85/10</p>
+                <p>Pursuing comprehensive education in computer science fundamentals, software engineering, and emerging technologies.</p>
+            </div>
+            <div class="card">
+                <h3>Minor in Computer Programming - NPTEL-SWAYAM (AICTE)</h3>
+                <div class="card-meta">Indian Institute of Technology (IIT) Madras | 2022–2026</div>
+                <p><strong>Grade:</strong> AA | <strong>Rank:</strong> Top 814 out of 28,000 students</p>
+                <p>Specialized program focusing on advanced programming concepts and algorithm design.</p>
+            </div>
+            <div class="card">
+                <h3>Secondary Education</h3>
+                <div class="card-meta">Barasat Mahatma Gandhi Memorial High School | 2018–2022</div>
+                <p><strong>Class 10th:</strong> 94.57% | <strong>Class 12th:</strong> 90.60%</p>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div id="experience" class="section">
+            <h2>Experience</h2>
+            <div class="card">
+                <h3>Project Intern (SWE-Summer)</h3>
+                <div class="card-meta">VECC – Kolkata (Onsite) | May 2025 – June 2025</div>
+                <p>Working on back-end development in network security using Python, Cryptography, OS threading, and database security to build security applications for 50+ users through socket connectivity.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Cryptography</span>
+                    <span class="tech-tag">Network Security</span>
+                    <span class="tech-tag">Database Security</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Project Management Intern (Freelancer)</h3>
+                <div class="card-meta">TEMS-Tech-Solutions (Remote) | Oct 2024 – Dec 2024</div>
+                <p>Managed Agile documentation for two projects, resolving 95% of issues in 24 hours to ensure uninterrupted project progress.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Agile Management</span>
+                    <span class="tech-tag">Project Documentation</span>
+                    <span class="tech-tag">Issue Resolution</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Technical Consultant Summer Intern</h3>
+                <div class="card-meta">Accenture (Remote) | Apr 2024 – Jul 2024</div>
+                <p>Conducted Technical Meetings with Clients to improve system interoperability by 15% and reduce data transfer latency by 30% via optimized API integration and middleware usage.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">API Integration</span>
+                    <span class="tech-tag">System Architecture</span>
+                    <span class="tech-tag">Client Consultation</span>
+                    <span class="tech-tag">Performance Optimization</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div id="projects" class="section">
+            <h2>Projects</h2>
+            <div class="card">
+                <h3>Location-Based Restaurant Search App <i class="fas fa-external-link-alt" style="font-size: 0.8em; color: #888;"></i></h3>
+                <div class="card-meta">Ongoing Project</div>
+                <p>Developing a location-based restaurant search app, integrating 50+ public APIs, and serving 70+ users with real-time search results under 2 seconds.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">HTML/CSS</span>
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Material UI</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">MySQL</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Full-Stack AI Mock Interview Preparation App</h3>
+                <div class="card-meta">Completed Project</div>
+                <p>Built a full-stack AI-powered mock interview preparation app, assisting 50+ users with personalized interview simulations and achieving a 92% user satisfaction rate.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React.js</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">MySQL</span>
+                    <span class="tech-tag">AI/ML</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Multi-PDF Chat Application for Project Risk Management</h3>
+                <div class="card-meta">Academic Project</div>
+                <p>Built a real-time multi-PDF chat app supporting 100+ users and querying across 10,000+ document pages with avg. response time of 1.2s using LangChain.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">ChromaDB</span>
+                    <span class="tech-tag">LangChain</span>
+                    <span class="tech-tag">Flask</span>
+                    <span class="tech-tag">PyQt5</span>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Product Sales Data Analysis</h3>
+                <div class="card-meta">Data Science Project</div>
+                <p>Analyzed product sales trends using visualized insights from large datasets for performance reporting.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">NumPy</span>
+                    <span class="tech-tag">Pandas</span>
+                    <span class="tech-tag">Seaborn</span>
+                    <span class="tech-tag">Matplotlib</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div id="skills" class="section">
+            <h2>Skills & Certifications</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>JavaScript</li>
+                        <li>SQL</li>
+                        <li>HTML/CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-laptop-code"></i> Frameworks & Libraries</h3>
+                    <ul>
+                        <li>React.js</li>
+                        <li>Flask</li>
+                        <li>Material UI</li>
+                        <li>Streamlit</li>
+                        <li>LangChain</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Databases & Tools</h3>
+                    <ul>
+                        <li>MySQL</li>
+                        <li>ChromaDB</li>
+                        <li>Git/GitHub</li>
+                        <li>AWS</li>
+                        <li>Google Cloud</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-brain"></i> AI & Data Science</h3>
+                    <ul>
+                        <li>Machine Learning</li>
+                        <li>Data Analysis</li>
+                        <li>NumPy/Pandas</li>
+                        <li>Matplotlib/Seaborn</li>
+                        <li>Natural Language Processing</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                    <ul>
+                        <li>NPTEL (DBMS, DSA, Java)</li>
+                        <li>HackerRank (Multiple)</li>
+                        <li>Udemy & Coursera</li>
+                        <li>Forage Programs</li>
+                        <li>Cloud Computing</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Other Skills</h3>
+                    <ul>
+                        <li>Network Security</li>
+                        <li>Cryptography</li>
+                        <li>Agile Methodology</li>
+                        <li>API Integration</li>
+                        <li>System Architecture</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements Section -->
+        <div id="achievements" class="section">
+            <h2>Achievements</h2>
+            <div class="achievement">
+                <i class="fas fa-trophy"></i>
+                <strong>Academic Excellence:</strong> Ranked 1st in 2nd Year and 8th in 1st Year of Academic Curriculum
+            </div>
+            <div class="achievement">
+                <i class="fas fa-medal"></i>
+                <strong>NPTEL Achiever & Domain Scholar:</strong> Top 0.5% among all participants
+            </div>
+            <div class="achievement">
+                <i class="fas fa-code"></i>
+                <strong>IIITD Tech Crisis Challenge:</strong> Top 50 Participants (by Unstop)
+            </div>
+            <div class="achievement">
+                <i class="fas fa-laptop"></i>
+                <strong>SIH-2024 Hackathon:</strong> Top 50 Participants
+            </div>
+            <div class="achievement">
+                <i class="fas fa-file-alt"></i>
+                <strong>Research Publication:</strong> Published Survey Paper on Gen-AI in Software Development at St. Xavier's College, Kolkata
+            </div>
+            <div class="achievement">
+                <i class="fas fa-chart-line"></i>
+                <strong>AI Research Impact:</strong> AI-assisted tools improved decision-making accuracy by 30% and reduced data processing time by 60%
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all nav buttons
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Add active class to clicked nav button
+            event.target.classList.add('active');
+        }
+
+        // Add smooth scroll effect
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add floating animation to cards on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                    }
+                });
+            });
+
+            const cards = document.querySelectorAll('.card, .skill-category, .achievement');
+            cards.forEach((card) => {
+                observer.observe(card);
+            });
+        });
+
+        // Add typing effect to name
+        const nameElement = document.querySelector('.header h1');
+        const originalText = nameElement.textContent;
+        nameElement.textContent = '';
+        
+        let i = 0;
+        function typeWriter() {
+            if (i < originalText.length) {
+                nameElement.textContent += originalText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        setTimeout(typeWriter, 500);
+    </script>
+</body>
+</html>
